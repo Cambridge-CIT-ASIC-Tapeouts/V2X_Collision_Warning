@@ -1,0 +1,16 @@
+name: gds
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  gds:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: TinyTapeout GDS Action
+      uses: TinyTapeout/tt-gds-action@tt07
