@@ -1,4 +1,4 @@
-module tt_um_v2x_warning (
+module tt_um_v2x_warning(
     input  [7:0] ui_in,
     output [7:0] uo_out,
     input  [7:0] uio_in,
@@ -13,8 +13,8 @@ wire collision_warning;
 wire alert_signal;
 
 collision_detector detector (
-    .vehicle1_pos(ui_in),
-    .vehicle2_pos(uio_in),
+    .vehicle1_pos(vehicle1_pos),
+    .vehicle2_pos(vehicle2_pos),
     .collision_warning(collision_warning)
 );
 
