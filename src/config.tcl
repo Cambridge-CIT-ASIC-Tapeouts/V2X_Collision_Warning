@@ -1,7 +1,7 @@
 set ::env(DESIGN_NAME) tt_um_v2x_warning
 
 set ::env(VERILOG_FILES) "\
-    /work/src/collision_detector.v"
+    /work/src/tt_um_v2x_warning.v
 
 set ::env(CLOCK_PORT) ""
 set ::env(CLOCK_NET) ""
