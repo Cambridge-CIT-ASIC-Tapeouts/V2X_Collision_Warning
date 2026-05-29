@@ -1,0 +1,64 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x582569c5a150 .scope module, "testbench" "testbench" 2 3;
+ .timescale -9 -12;
+v0x582569c6edf0_0 .net "collision_warning", 0 0, L_0x582569c6f5b0;  1 drivers
+v0x582569c6ee90_0 .var "vehicle1_pos", 7 0;
+v0x582569c6ef30_0 .var "vehicle2_pos", 7 0;
+S_0x582569c5a2e0 .scope module, "uut" "collision_detector" 2 10, 3 1 0, S_0x582569c5a150;
+ .timescale 0 0;
+    .port_info 0 /INPUT 8 "vehicle1_pos";
+    .port_info 1 /INPUT 8 "vehicle2_pos";
+    .port_info 2 /OUTPUT 1 "collision_warning";
+v0x582569c5a510_0 .net *"_ivl_0", 0 0, L_0x582569c6f030;  1 drivers
+v0x582569c6e4c0_0 .net *"_ivl_10", 0 0, L_0x582569c6f470;  1 drivers
+L_0x761a99557060 .functor BUFT 1, C4<1>, C4<0>, C4<0>, C4<0>;
+v0x582569c6e580_0 .net/2u *"_ivl_12", 0 0, L_0x761a99557060;  1 drivers
+L_0x761a995570a8 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x582569c6e640_0 .net/2u *"_ivl_14", 0 0, L_0x761a995570a8;  1 drivers
+v0x582569c6e720_0 .net *"_ivl_2", 7 0, L_0x582569c6f150;  1 drivers
+v0x582569c6e850_0 .net *"_ivl_4", 7 0, L_0x582569c6f1f0;  1 drivers
+L_0x761a99557018 .functor BUFT 1, C4<00001010>, C4<0>, C4<0>, C4<0>;
+v0x582569c6e930_0 .net/2u *"_ivl_8", 7 0, L_0x761a99557018;  1 drivers
+v0x582569c6ea10_0 .net "collision_warning", 0 0, L_0x582569c6f5b0;  alias, 1 drivers
+v0x582569c6ead0_0 .net "distance", 7 0, L_0x582569c6f320;  1 drivers
+v0x582569c6ebb0_0 .net "vehicle1_pos", 7 0, v0x582569c6ee90_0;  1 drivers
+v0x582569c6ec90_0 .net "vehicle2_pos", 7 0, v0x582569c6ef30_0;  1 drivers
+L_0x582569c6f030 .cmp/gt 8, v0x582569c6ee90_0, v0x582569c6ef30_0;
+L_0x582569c6f150 .arith/sub 8, v0x582569c6ee90_0, v0x582569c6ef30_0;
+L_0x582569c6f1f0 .arith/sub 8, v0x582569c6ef30_0, v0x582569c6ee90_0;
+L_0x582569c6f320 .functor MUXZ 8, L_0x582569c6f1f0, L_0x582569c6f150, L_0x582569c6f030, C4<>;
+L_0x582569c6f470 .cmp/gt 8, L_0x761a99557018, L_0x582569c6f320;
+L_0x582569c6f5b0 .functor MUXZ 1, L_0x761a995570a8, L_0x761a99557060, L_0x582569c6f470, C4<>;
+    .scope S_0x582569c5a150;
+T_0 ;
+    %vpi_call 2 18 "$display", "Starting V2X Collision Warning Test" {0 0 0};
+    %pushi/vec4 50, 0, 8;
+    %store/vec4 v0x582569c6ee90_0, 0, 8;
+    %pushi/vec4 70, 0, 8;
+    %store/vec4 v0x582569c6ef30_0, 0, 8;
+    %delay 10000, 0;
+    %vpi_call 2 25 "$display", "Distance Safe -> Warning = %b", v0x582569c6edf0_0 {0 0 0};
+    %pushi/vec4 50, 0, 8;
+    %store/vec4 v0x582569c6ee90_0, 0, 8;
+    %pushi/vec4 55, 0, 8;
+    %store/vec4 v0x582569c6ef30_0, 0, 8;
+    %delay 10000, 0;
+    %vpi_call 2 32 "$display", "Collision Risk -> Warning = %b", v0x582569c6edf0_0 {0 0 0};
+    %delay 10000, 0;
+    %vpi_call 2 36 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "test/testbench.v";
+    "src/collision_detector.v";
