@@ -1,0 +1,9 @@
+runs/
+*.gds
+*.def
+*.mag
+*.log
+*.vcd
+sim.out
+venv/
+__pycache__/

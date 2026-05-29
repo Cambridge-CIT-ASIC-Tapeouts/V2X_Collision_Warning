@@ -5,15 +5,15 @@ module tt_um_v2x_warning (
     output wire [7:0] uio_out,
     output wire [7:0] uio_oe,
 
-    input  wire       ena,
-    input  wire       clk,
-    input  wire       rst_n
+    input  wire ena,
+    input  wire clk,
+    input  wire rst_n
 );
 
 wire [7:0] vehicle1_pos;
 wire [7:0] vehicle2_pos;
-wire collision_warning;
 wire [7:0] distance;
+wire collision_warning;
 
 assign vehicle1_pos = ui_in;
 assign vehicle2_pos = uio_in;
