@@ -1,4 +1,4 @@
-set ::env(DESIGN_NAME) collision_detector
+set ::env(DESIGN_NAME) tt_um_v2x_warning
 
 set ::env(VERILOG_FILES) "\
     /work/src/collision_detector.v"
